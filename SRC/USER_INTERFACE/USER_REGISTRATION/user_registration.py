@@ -6,6 +6,7 @@ import datetime as dt
 import SRC.USER_INTERFACE.UTILS.utils as utils
 from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
 from SRC.USER_INTERFACE.CAREER_CHOICE.career_choice_menu import CareerChoice
+from SRC.USER_INTERFACE.UTILS.utils_json_update import save_json
 
 class UserRegistration:
     day = None
@@ -104,19 +105,9 @@ class UserRegistration:
             time.sleep(1)
             self.collect_information()     
         else:
-            self.save_user(self.user_data)
+            save_json(self.user_data)
             self.confirmation()
 
-    def save_user(self, usr_data):
-            # Certificando-se de que a pasta SAVES existe
-        os.makedirs(os.path.dirname('SAVES/user_data.json'), exist_ok=True)
-
-        # 💾 Gravando as informações
-        with open('SAVES/user_data.json', "w", encoding="utf-8") as file:
-            # indent=4 deixa o arquivo legível para humanos
-            # ensure_ascii=False permite acentos (como o 'ã' de brasileiro)
-            json.dump(usr_data, file, indent=4, ensure_ascii=False)
-            print(f"{self.color('CYAN')} Configurações salvas com sucesso!! {self.color('RESET')}")
     
     def confirmation(self):
         print(f"\n{self.color('CYAN')}" + "─" * 75 + f"{self.color('RESET')}")

@@ -1,56 +1,41 @@
-import time
-import SRC.USER_INTERFACE.UTILS.utils as utils
+from SRC.USER_INTERFACE.UTILS.utils_json_update import update_json
 from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
+from SRC.USER_INTERFACE.UTILS.utils import clear_screen
+color_choice = ColorPallete()
+color = color_choice.color_picker
 
-class UserPersonality:
-    def __init__(self):
-        self.color_choice = ColorPallete()
-        self.color = self.color_choice.color_picker
-        self.personality_data = None
-        self.display_options()
+def show_personality_menu():
 
-    def display_options(self):
-        utils.clear_screen()
-        
-        # Cabeçalho Minimalista Seguindo o seu padrão
-        print(f"{self.color('CIANO')}┌" + "─"*73 + "┐")
-        print(f"│ {self.color('BOLD')}PERFIL DE LIDERANÇA EXECUTIVA{' ':^42}{self.color('RESET')}{self.color('CIANO')}│")
-        print(f"└" + "─"*73 + f"┘{self.color('RESET')}")
-        
-        print(f"\n {self.color('SILVER')}Defina como você será conhecido nos bastidores do futebol:{self.color('RESET')}\n")
+    clear_screen()
 
-        # Opção 1
-        print(f" {self.color('RED')}[1] O CENTRALIZADOR{self.color('RESET')}")
-        print(f"     {self.color('SILVER')}Bônus: +15% Respeito do Vestiário | Risco: -10% Apoio da Diretoria{self.color('RESET')}\n")
+    # Cabeçalho de Personalidade
+    print(f"{color('GOLD')}╔" + "═"*73 + "╗")
+    print(f"║{color('RESET')}{color('BOLD')}  🧠 PERFIL PSICOLÓGICO & LIDERANÇA{' ':^41}{color('GOLD')}║")
+    print(f"╠" + "═"*73 + "╣")
+    print(f"║{color('RESET')}  {color('GOLD')}✨ PERSONALIDADE: {color('BOLD')}Como você será conhecido no vestiário?{color('RESET')}{' ':^8}{color('GOLD')}║")
+    print(f"╚" + "═"*73 + f"╝{color('RESET')}")
 
-        # Opção 2
-        print(f" {self.color('GREEN')}[2] O DIPLOMATA{self.color('RESET')}")
-        print(f"     {self.color('SILVER')}Bônus: +10% Sucesso em Negociações | Risco: Dificuldade em Punir Atletas{self.color('RESET')}\n")
+    print(f"\n{color('BOLD')}Escolha o seu arquétipo de liderança:{color('RESET')}\n")
+    
+    # Opções com Emojis
+    print(f"{color('GOLD')}[ 1 ]{color('RESET')} {color('BOLD')}O ESTRATEGISTA{color('RESET')} 🧠 (Focado em finanças e visão de longo prazo)")
+    print(f"{color('GOLD')}[ 2 ]{color('RESET')} {color('GOLD')}O APAIXONADO{color('RESET')} 🔥 (Movido pela emoção e conexão com a torcida)")
+    print(f"{color('GOLD')}[ 3 ]{color('RESET')} {color('BOLD')}O DITADOR{color('RESET')} 👔 (Poder absoluto, exige disciplina impecável)")
+    print(f"{color('GOLD')}[ 4 ]{color('RESET')} {color('BOLD')}O PARCEIRO{color('RESET')} 🤝 (Próximo aos jogadores e focado no bem-estar)")
 
-        # Opção 3
-        print(f" {self.color('YELLOW')}[3] O ESTRATEGISTA{self.color('RESET')}")
-        print(f"     {self.color('SILVER')}Bônus: Visão de Atributos Ocultos | Risco: Torcida exige resultados imediatos{self.color('RESET')}\n")
-
-        print(f"{self.color('CIANO')}" + "─" * 75 + f"{self.color('RESET')}")
-        
-        choice = input(f" {self.color('MAGENTA')}➤ SELECIONE SEU PERFIL (1-3): {self.color('RESET')}").strip()
-
-        match choice:
-            case '1':
-                self.personality_data = "Centralizador"
-            case '2':
-                self.personality_data = "Diplomata"
-            case '3':
-                self.personality_data = "Estrategista"
-            case _:
-                print(f"\n {self.color('RED')}⚠️ Opção inválida! Escolha entre 1, 2 ou 3.{self.color('RESET')}")
-                time.sleep(1.5)
-                self.display_options()
-
-        self.confirmation()
-        return self.personality_data
-
-    def confirmation(self):
-        print(f"\n{self.color('CIANO')}" + "─" * 75 + f"{self.color('RESET')}")
-        print(f" {self.color('GREEN')}Perfil definido: O {self.personality_data} está pronto para assumir o cargo.{self.color('RESET')}")
-        time.sleep(1.5)
+    print(f"\n{color('CYAN')}   " + "─" * 69 + f"{color('RESET')}")
+    
+    escolha = input(f"{color('BOLD')}Sua escolha (1-4): {color('RESET')}")
+    
+    # Mapeamento para o JSON
+    profiles = {
+        "1": "Strategist",
+        "2": "Passionate",
+        "3": "Dictator",
+        "4": "Partner"
+    }
+    
+    final_personality = profiles.get(escolha, "Strategist")
+    
+    # Agora basta usar sua função de update!
+    update_json('personality', final_personality)

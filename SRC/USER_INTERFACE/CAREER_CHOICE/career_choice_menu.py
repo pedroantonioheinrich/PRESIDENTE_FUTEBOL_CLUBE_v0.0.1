@@ -1,5 +1,7 @@
-from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
+import time
 import SRC.USER_INTERFACE.UTILS.utils as utils
+from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
+from SRC.USER_INTERFACE.UTILS.utils_json_update import update_json
 
 class CareerChoice:
     def __init__(self):
@@ -35,11 +37,18 @@ class CareerChoice:
         print(f"╚" + "═"*75 + f"╝{self.color('RESET')}")
         
         choice = input(f"\n{self.color('MAGENTA')}Como sua história começa? Selecione [1-2] ou [0] Voltar: {self.color('RESET')}")
+
+        
+
         match(choice):
             case '1':
+                update_json('career_choice', 'heir')
+                time.sleep(2)
                 from SRC.USER_INTERFACE.CAREER_CHOICE.career_choice_heir import CareerHeir
                 CareerHeir()
             case '2':
+                update_json('career_choice', 'entrepreneur')
+                time.sleep(2)
                 from SRC.USER_INTERFACE.CAREER_CHOICE.career_choice_entrepreneur import CareerEntrepreneur
                 CareerEntrepreneur()
             case '0':

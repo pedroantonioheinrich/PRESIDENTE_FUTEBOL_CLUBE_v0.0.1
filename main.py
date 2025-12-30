@@ -11,10 +11,10 @@ class RunGame:
 
 if __name__ == "__main__":
     try:
-        RunGame().loading()
+        # RunGame().loading()   <<----- desativado durante fase de testes
         RunGame().start_menu()
-     
+
     except KeyboardInterrupt:
         print("Game interrupted by user. Exiting...")
         time.sleep(1)
-        sys.exit()  
+        sys.exit()
