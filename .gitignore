@@ -1,3 +1,31 @@
-/SAVES
-SAVES
-.SAVES
+### Python ###
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+### Databases & Data (Essencial para seu projeto) ###
+# Ignora o CSV temporário do gerador para não sujar o histórico
+DATABASE_GENERATOR/temp_database.csv
+
+# Ignora o banco de dados SQLite (arquivos binários costumam causar conflitos no Git)
+# Se você quiser que o banco padrão vá para o Git, comente a linha abaixo com #
+DATA/*.db
+
+### IDEs & Tools ###
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+### Distribution / Packaging ###
+dist/
+build/
+*.egg-info/

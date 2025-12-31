@@ -5,16 +5,24 @@ import SRC.USER_INTERFACE.STARTING_GAME_MENU.starting_game_loading as loading_sc
 
 class RunGame:
     def __init__(self):
+        # Referenciando as funções importadas
         self.start_menu = display_starting_menu
         self.loading = loading_screen
 
+    def run(self):
+        # RunGame().loading() <<--- Ative quando quiser a barra de carregamento
+        self.start_menu()
 
 if __name__ == "__main__":
     try:
-        # RunGame().loading()   <<----- desativado durante fase de testes
-        RunGame().start_menu()
+        # Inicia a instância do jogo
+        game = RunGame()
+        game.run()
 
     except KeyboardInterrupt:
-        print("Jogo interrompido pelo usuario. Saindo...")
+        print("\n[!] Jogo interrompido pelo usuário. Saindo...")
         time.sleep(1)
+        sys.exit()
+    except Exception as e:
+        print(f"\n[!] Erro crítico ao iniciar o jogo: {e}")
         sys.exit()

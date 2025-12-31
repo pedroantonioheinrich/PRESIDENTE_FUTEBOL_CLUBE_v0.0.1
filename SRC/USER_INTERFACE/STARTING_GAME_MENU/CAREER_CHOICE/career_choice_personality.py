@@ -40,4 +40,5 @@ def show_personality_menu():
     # Agora basta usar sua função de update!
     update_json('personality', final_personality)
     time.sleep(1)
-    clear_screen()
+    from SRC.USER_INTERFACE.STARTING_GAME_MENU.CAREER_CHOICE.career_club_selector import ClubSelector
+    ClubSelector()
