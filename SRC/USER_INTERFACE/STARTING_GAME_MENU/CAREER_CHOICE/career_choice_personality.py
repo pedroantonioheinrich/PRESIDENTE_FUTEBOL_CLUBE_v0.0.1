@@ -1,8 +1,8 @@
+import time
 from SRC.USER_INTERFACE.UTILS.utils_json_update import update_json
-from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
+from SRC.USER_INTERFACE.UTILS.utils_color_pallete import color
 from SRC.USER_INTERFACE.UTILS.utils import clear_screen
-color_choice = ColorPallete()
-color = color_choice.color_picker
+
 
 def show_personality_menu():
 
@@ -10,9 +10,9 @@ def show_personality_menu():
 
     # Cabeçalho de Personalidade
     print(f"{color('GOLD')}╔" + "═"*73 + "╗")
-    print(f"║{color('RESET')}{color('BOLD')}  🧠 PERFIL PSICOLÓGICO & LIDERANÇA{' ':^41}{color('GOLD')}║")
+    print(f"║{color('RESET')}{color('BOLD')}  🧠 PERFIL PSICOLÓGICO & LIDERANÇA{' ':^38}{color('GOLD')}║")
     print(f"╠" + "═"*73 + "╣")
-    print(f"║{color('RESET')}  {color('GOLD')}✨ PERSONALIDADE: {color('BOLD')}Como você será conhecido no vestiário?{color('RESET')}{' ':^8}{color('GOLD')}║")
+    print(f"║{color('RESET')}  {color('GOLD')}✨ PERSONALIDADE: {color('BOLD')}Como você será conhecido no vestiário?{color('RESET')}{' ':^15}{color('GOLD')}║")
     print(f"╚" + "═"*73 + f"╝{color('RESET')}")
 
     print(f"\n{color('BOLD')}Escolha o seu arquétipo de liderança:{color('RESET')}\n")
@@ -39,3 +39,5 @@ def show_personality_menu():
     
     # Agora basta usar sua função de update!
     update_json('personality', final_personality)
+    time.sleep(1)
+    clear_screen()

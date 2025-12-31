@@ -2,7 +2,7 @@ import sys
 import random
 import time
 import SRC.USER_INTERFACE.UTILS.utils  as utils 
-from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
+from SRC.USER_INTERFACE.UTILS.utils_color_pallete import color
 from game_version import VERSION
 
 
@@ -10,10 +10,6 @@ from game_version import VERSION
 
 
 def loading_screen():
-
-    color_choice = ColorPallete()
-    color = color_choice.color_picker
-
     phrases = [
         "🌱 Aparando a grama do estádio...",
         "⚽ Inflando as bolas de treino...",
@@ -71,6 +67,3 @@ def loading_screen():
     print(f"{color("GREEN")}  SISTEMA PRONTO! ENTRANDO NO GABINETE...{color("RESET")}")
     time.sleep(1.2)
     utils.clear_screen()
-
-if __name__ == "__main__":
-    loading_screen()

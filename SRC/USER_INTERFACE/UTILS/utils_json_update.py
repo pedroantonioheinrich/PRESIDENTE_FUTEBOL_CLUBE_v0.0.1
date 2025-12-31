@@ -1,10 +1,7 @@
 import os
 import json
-from SRC.USER_INTERFACE.UTILS.utils_color_pallete import ColorPallete
+from SRC.USER_INTERFACE.UTILS.utils_color_pallete import color
 
-
-color_choice = ColorPallete()
-color = color_choice.color_picker
 
 def save_json(usr_data):
     # Certificando-se de que a pasta SAVES existe
